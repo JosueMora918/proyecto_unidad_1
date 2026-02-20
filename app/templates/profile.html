@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Perfil de Jugador: {{ user.username }}</h1>
+    <p>Email de contacto: {{ user.email }}</p>
+
+    <div class="actions">
+        <a href="{{ url_for('user.edit_profile', id=user.id) }}">Editar Datos</a>
+
+        <form action="{{ url_for('user.delete_user', id=user.id) }}" method="POST" style="display:inline;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <button type="submit" onclick="return confirm('¿Eliminar usuario permanentemente?')">Eliminar Cuenta</button>
+        </form>
+    </div>
+{% endblock %}

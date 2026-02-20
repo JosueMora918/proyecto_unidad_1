@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Comunidad de Gamers</h1>
+    <ul>
+        {% for user in users %}
+            <li>
+                <strong>{{ user.username | capitalize }}</strong> - {{ user.email }}
+                <a href="{{ url_for('user.profile', id=user.id) }}">Ver Perfil</a>
+            </li>
+        {% else %}
+            <li>No hay usuarios registrados aún.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
